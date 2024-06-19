@@ -5,7 +5,7 @@ import {
   ArrowRight,
   MessageSquare,
   Music,
-  ImageIcon,
+  NotebookText,
   VideoIcon,
   Code,
 } from "lucide-react";
@@ -30,11 +30,11 @@ const tools = [
     href: "/music",
   },
   {
-    label: "Image Generation",
-    icon: ImageIcon,
+    label: "Summary Generation",
+    icon: NotebookText,
     color: "text-pink-700",
     bgColor: "bg-pink-700/10",
-    href: "/image",
+    href: "/summary",
   },
   {
     label: "Video Generation",

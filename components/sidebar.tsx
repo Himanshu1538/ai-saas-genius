@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import {
   Code,
-  ImageIcon,
+  NotebookText,
   LayoutDashboard,
   MessageSquare,
   Music,
@@ -31,9 +31,9 @@ const routes = [
     color: "text-violet-500",
   },
   {
-    label: "Image Generation",
-    icon: ImageIcon,
-    href: "/image",
+    label: "Summary Generation",
+    icon: NotebookText,
+    href: "/summary",
     color: "text-pink-700",
   },
   {
