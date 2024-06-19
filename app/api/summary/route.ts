@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { AiChatSession } from "./config";
 // import { Configuration, OpenAIApi } from "openai";
 
-// import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
+import { checkApiLimit, increaseApiLimit } from "@/lib/api-limit";
 // import { checkSubscription } from "@/lib/subscription";
 
 // const configuration = new Configuration({
@@ -26,11 +26,13 @@ export async function POST(req: Request) {
     if (!messages)
       return new NextResponse("Messages Are Required", { status: 400 });
 
-    // const freeTrial = await checkApiLimit();
+    const freeTrial = await checkApiLimit();
     // const isPro = await checkSubscription();
 
     // if (!freeTrial && !isPro)
     //   return new NextResponse("Free Trial Has Expired", { status: 403 });
+    if (!freeTrial)
+      return new NextResponse("Free Trial Has Expired", { status: 403 });
 
     // const response = await openai.createChatCompletion({
     //   model: "gpt-3.5-turbo",
@@ -43,6 +45,7 @@ export async function POST(req: Request) {
     console.log("Summary API response", result.response.text());
 
     // if (!isPro) await increaseApiLimit();
+    await increaseApiLimit();
 
     // return NextResponse.json(result.data.choices[0].message);
     return NextResponse.json(result.response.text());
