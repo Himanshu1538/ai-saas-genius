@@ -8,10 +8,10 @@ import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 
 import { MAX_FREE_COUNT } from "@/constants";
-// import { useProModal } from "@/hooks/use-pro-modal";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const FreeCounter = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
-  //   const proModal = useProModal();
+  const proModal = useProModal();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const FreeCounter = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
             />
           </div>
           <Button
-            // onClick={proModal.onOpen}
+            onClick={proModal.onOpen}
             variant="premium"
             className="w-full"
           >

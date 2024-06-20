@@ -21,7 +21,7 @@ import UserAvatar from "@/components/user-avatar";
 import BotAvatar from "@/components/bot-avatar";
 
 import { cn } from "@/lib/utils";
-// import { useProModal } from "@/hooks/use-pro-modal";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
 
@@ -31,7 +31,7 @@ interface Messages {
 }
 
 const SummaryPage = () => {
-  //   const proModal = useProModal();
+  const proModal = useProModal();
   const router = useRouter();
   // const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [messages, setMessages] = useState<Messages[]>([]);
@@ -75,7 +75,7 @@ const SummaryPage = () => {
       ]);
       form.reset();
     } catch (error: any) {
-      //   if (error?.response?.status === 403) proModal.onOpen();
+      if (error?.response?.status === 403) proModal.onOpen();
       //   else toast.error("Something went wrong.");
     } finally {
       router.refresh();
