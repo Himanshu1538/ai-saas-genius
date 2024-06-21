@@ -62,7 +62,13 @@ const routes = [
   },
 ];
 
-const Sidebar = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
+const Sidebar = ({
+  apiLimitCount = 0,
+  isPro = false,
+}: {
+  apiLimitCount: number;
+  isPro: boolean;
+}) => {
   const pathname = usePathname();
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
@@ -95,8 +101,7 @@ const Sidebar = ({ apiLimitCount = 0 }: { apiLimitCount: number }) => {
           ))}
         </div>
       </div>
-      {/* <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} /> */}
-      <FreeCounter apiLimitCount={apiLimitCount} />
+      <FreeCounter isPro={isPro} apiLimitCount={apiLimitCount} />
     </div>
   );
 };
