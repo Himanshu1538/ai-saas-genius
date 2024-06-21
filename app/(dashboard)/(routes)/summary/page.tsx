@@ -9,7 +9,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 // import { ChatCompletionRequestMessage } from "openai";
-// import { toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import Heading from "@/components/heading";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
@@ -76,7 +76,7 @@ const SummaryPage = () => {
       form.reset();
     } catch (error: any) {
       if (error?.response?.status === 403) proModal.onOpen();
-      //   else toast.error("Something went wrong.");
+      else toast.error("Something went wrong.");
     } finally {
       router.refresh();
     }

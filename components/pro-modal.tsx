@@ -11,7 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import axios from "axios";
-// import { toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import {
   Dialog,
@@ -72,8 +72,7 @@ const ProModal = () => {
 
       window.location.href = response.data.url;
     } catch (error) {
-      console.log("STRIPE_CLIENT_ERROR", error);
-      //   toast.error("Something went wrong.");
+      toast.error("Something went wrong.");
     } finally {
       setLoading(false);
     }
