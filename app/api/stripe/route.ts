@@ -1,4 +1,3 @@
-// import { auth, currentUser } from "@clerk/nextjs";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
@@ -41,12 +40,12 @@ export async function GET() {
       line_items: [
         {
           price_data: {
-            currency: "USD",
+            currency: "INR",
             product_data: {
               name: "Genius Pro",
               description: "Unlimited AI Generations.",
             },
-            unit_amount: 2000,
+            unit_amount: 49900,
             recurring: {
               interval: "month",
             },
