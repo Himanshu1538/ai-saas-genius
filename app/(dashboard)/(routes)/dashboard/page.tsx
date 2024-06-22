@@ -1,14 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  ArrowRight,
-  MessageSquare,
-  Music,
-  NotebookText,
-  VideoIcon,
-  Code,
-} from "lucide-react";
+import { ArrowRight, MessageSquare, NotebookText, Code } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -22,14 +15,6 @@ const tools = [
     bgColor: "bg-violet-500/10",
     href: "/conversation",
   },
-  // {
-  //   label: "Music Generation",
-  //   icon: Music,
-  //   color: "text-emerald-500",
-  //   bgColor: "bg-emerald-500/10",
-  //   href: "/music",
-  // },
-
   {
     label: "Summary Generation",
     icon: NotebookText,
@@ -44,13 +29,6 @@ const tools = [
     bgColor: "bg-green-700/10",
     href: "/code",
   },
-  // {
-  //   label: "Video Generation",
-  //   icon: VideoIcon,
-  //   color: "text-orange-700",
-  //   bgColor: "bg-orange-700/10",
-  //   href: "/video",
-  // },
 ];
 
 const DashboardPage = () => {

@@ -6,9 +6,7 @@ import {
   NotebookText,
   LayoutDashboard,
   MessageSquare,
-  Music,
   Settings,
-  VideoIcon,
 } from "lucide-react";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
@@ -37,18 +35,6 @@ const routes = [
     href: "/summary",
     color: "text-pink-700",
   },
-  // {
-  //   label: "Video Generation",
-  //   icon: VideoIcon,
-  //   href: "/video",
-  //   color: "text-orange-700",
-  // },
-  // {
-  //   label: "Music Generation",
-  //   icon: Music,
-  //   href: "/music",
-  //   color: "text-emerald-500",
-  // },
   {
     label: "Code Generation",
     icon: Code,

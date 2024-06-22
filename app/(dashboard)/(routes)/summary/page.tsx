@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import ReactMarkdown from "react-markdown";
-// import { ChatCompletionRequestMessage } from "openai";
 import { toast } from "react-hot-toast";
 
 import Heading from "@/components/heading";
@@ -33,7 +32,6 @@ interface Messages {
 const SummaryPage = () => {
   const proModal = useProModal();
   const router = useRouter();
-  // const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [messages, setMessages] = useState<Messages[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -47,24 +45,18 @@ const SummaryPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // const userMessage: ChatCompletionRequestMessage = {
-      //   role: "user",
-      //   content: values.prompt,
-      // };
       const userMessage = {
         role: "user",
         content: values.prompt,
       };
 
-      // const userMessage = values.prompt;
-
       const newMessages = [...messages, userMessage];
-      // const newMessages = userMessage;
+
       const response = await axios.post("/api/summary", {
         messages: newMessages,
       });
-      // setMessages((current) => [...current, userMessage, response.data]);
-      console.log("Summary Model Response", response.data);
+      // console.log("Summary Model Response", response.data);
+
       setMessages((current) => [
         ...current,
         userMessage,

@@ -1,8 +1,14 @@
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
+import type { Metadata } from "next";
 
 import { getApiLimitCount } from "@/lib/api-limit";
 import { checkSubscription } from "@/lib/subscription";
+
+export const metadata: Metadata = {
+  title: "Dashboard | Genius",
+  description: "AI SaaS Platform.",
+};
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const apiLimitCount = await getApiLimitCount();

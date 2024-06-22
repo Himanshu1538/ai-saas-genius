@@ -7,7 +7,7 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-// import { ChatCompletionRequestMessage } from "openai";
+import ReactMarkdown from "react-markdown";
 import { toast } from "react-hot-toast";
 
 import Heading from "@/components/heading";
@@ -32,7 +32,6 @@ interface Messages {
 const ConversationPage = () => {
   const proModal = useProModal();
   const router = useRouter();
-  // const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const [messages, setMessages] = useState<Messages[]>([]);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -46,24 +45,18 @@ const ConversationPage = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // const userMessage: ChatCompletionRequestMessage = {
-      //   role: "user",
-      //   content: values.prompt,
-      // };
       const userMessage = {
         role: "user",
         content: values.prompt,
       };
 
-      // const userMessage = values.prompt;
-
       const newMessages = [...messages, userMessage];
-      // const newMessages = userMessage;
+
       const response = await axios.post("/api/conversation", {
         messages: newMessages,
       });
-      // setMessages((current) => [...current, userMessage, response.data]);
-      console.log("Conversation Model Response", response.data);
+      // console.log("Conversation Model Response", response.data);
+
       setMessages((current) => [
         ...current,
         userMessage,
@@ -142,7 +135,9 @@ const ConversationPage = () => {
                 )}
               >
                 {message.role === "user" ? <UserAvatar /> : <BotAvatar />}
-                <p className="text-sm">{message.content}</p>
+                <ReactMarkdown className="text-sm overflow-hidden leading-7">
+                  {message.content || ""}
+                </ReactMarkdown>
               </div>
             ))}
           </div>

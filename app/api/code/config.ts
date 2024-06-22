@@ -1,8 +1,4 @@
-import {
-  GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
-} from "@google/generative-ai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const apiKey: string = process.env.NEXT_PUBLIC_GEMINI_API_KEY ?? "";
 const genAI: GoogleGenerativeAI = new GoogleGenerativeAI(apiKey);
