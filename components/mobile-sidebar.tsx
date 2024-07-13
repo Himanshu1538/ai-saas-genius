@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Sidebar from "@/components/sidebar";
 
+// Component for the mobile sidebar, displaying the sidebar in a sheet on mobile devices
 const MobileSidebar = ({
   apiLimitCount = 0,
   isPro = false,
@@ -16,10 +17,12 @@ const MobileSidebar = ({
 }) => {
   const [isMounted, setIsMounted] = useState(false);
 
+  // Ensure the component is only rendered on the client side
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
+  // Do not render anything if the component is not mounted
   if (!isMounted) return null;
 
   return (

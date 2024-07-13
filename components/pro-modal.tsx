@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import { useProModal } from "@/hooks/use-pro-modal";
 import { cn } from "@/lib/utils";
 
+// List of tools available in the Pro version
 const tools = [
   {
     label: "Conversation",
@@ -41,10 +42,12 @@ const tools = [
   },
 ];
 
+// Modal component for upgrading to the Pro version
 const ProModal = () => {
   const proModal = useProModal();
   const [loading, setLoading] = useState<boolean>(false);
 
+  // Function to handle subscription
   const onSubscribe = async () => {
     try {
       setLoading(true);

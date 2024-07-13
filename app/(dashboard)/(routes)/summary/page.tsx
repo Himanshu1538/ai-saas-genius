@@ -34,6 +34,7 @@ const SummaryPage = () => {
   const router = useRouter();
   const [messages, setMessages] = useState<Messages[]>([]);
 
+  // Initialize the form using react-hook-form and zod for validation
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,22 +42,28 @@ const SummaryPage = () => {
     },
   });
 
+  // Check if the form is in the submitting state
   const isLoading = form.formState.isSubmitting;
 
+  // Function to handle form submission
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      // Create a user message object
       const userMessage = {
         role: "user",
         content: values.prompt,
       };
 
+      // Add the user message to the current messages
       const newMessages = [...messages, userMessage];
 
+      // Send the messages to the server and get the response
       const response = await axios.post("/api/summary", {
         messages: newMessages,
       });
       // console.log("Summary Model Response", response.data);
 
+      // Update the messages state with the new messages
       setMessages((current) => [
         ...current,
         userMessage,
@@ -65,8 +72,11 @@ const SummaryPage = () => {
           content: response.data,
         },
       ]);
+
+      // Reset the form
       form.reset();
     } catch (error: any) {
+      // Handle errors
       if (error?.response?.status === 403) proModal.onOpen();
       else toast.error("Something went wrong.");
     } finally {

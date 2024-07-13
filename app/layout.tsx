@@ -8,13 +8,16 @@ import ModalProvider from "@/components/modal-provider";
 import ToasterProvider from "@/components/toaster-provider";
 import CrispProvider from "@/components/crisp-provider";
 
+// Configure the Inter font from Google Fonts
 const inter = Inter({ subsets: ["latin"] });
 
+// Metadata for the application
 export const metadata: Metadata = {
   title: "Genius",
   description: "AI SaaS Platform",
 };
 
+// Root layout component
 export default function RootLayout({
   children,
 }: Readonly<{

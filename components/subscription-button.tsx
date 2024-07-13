@@ -7,9 +7,11 @@ import { toast } from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
 
+// Component for the subscription button, which handles upgrading or managing subscription
 const SubscriptionButton = ({ isPro = false }: { isPro: boolean }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
+  // Function to handle button click
   const onClick = async () => {
     try {
       setLoading(true);

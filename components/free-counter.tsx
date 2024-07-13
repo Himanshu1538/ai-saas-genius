@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { MAX_FREE_COUNT } from "@/constants";
 import { useProModal } from "@/hooks/use-pro-modal";
 
+// Component to display the free usage counter and prompt to upgrade if the user is not Pro
 const FreeCounter = ({
   apiLimitCount = 0,
   isPro = false,
@@ -20,12 +21,14 @@ const FreeCounter = ({
   const proModal = useProModal();
   const [mounted, setMounted] = useState(false);
 
+  // Ensure the component is only rendered on the client side
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Do not render anything if the component is not mounted
   if (!mounted) return null;
-
+  // Do not render anything if the user is Pro
   if (isPro) return null;
 
   return (
